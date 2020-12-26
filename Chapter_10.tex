@@ -22,6 +22,7 @@ For comparing two treatments, two basic types of design are:
     \item{Matched Pairs Sample (Randomization within each matched pair)}
 \end{itemize}
 
+\break
 
 \section{Inferences About The Difference of Means - Independent Large Samples}
 With the design of \textit{independent samples}, we obtain:
@@ -45,4 +46,27 @@ With the design of \textit{independent samples}, we obtain:
     \item The samples are independent. The response measurements under one treatment are unrelated to the response measurements under the other.
 \end{itemize}
 \end{mdframed}
+
+\subsection{Estimation}
+
+\begin{mdframed}
+\title{Large Samples Confidence Interval for \(\mu_1 = \mu_2\)}
+When \(n_1\) \& \(n_2\) are greater than 30, an approximate \(100(1 - \alpha)\%\) confidence interval for \( \mu_1 - \mu_2\) is given by
+
+\[
+    (\bar{X} - \bar{Y} - z_{\frac{\alpha}{2}} \sqrt{\frac{s_1^2}{n_1} * \frac{s_2^2}{n_2}}, \bar{X} - \bar{Y} + z_{\frac{\alpha}{2}} \sqrt{\frac{s_1^2}{n_1} * \frac{s_2^2}{n_2}})
+\]
+
+where \(z_{\frac{\alpha}{2}}\) is the upper \(\frac{\alpha}{2}\) point of \(N(0, 1)\)
+\end{mdframed}
+
+\subsection{Hypothesis Testing}
+\(H_0 : \mu_1 - \mu_2 = 0\), employs the test statistic
+
+\[
+    Z = \frac{\bar{X} - \bar{Y}}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
+\]
+
+which is roughly \(N(0, 1)\) when \(\mu_1 - \mu_2 = 0\).
+
 \end{document}

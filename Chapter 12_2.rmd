@@ -1,0 +1,37 @@
+---
+title: "Chapter 12.2"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+library(tibble)
+library(distributions3)
+```
+
+# Exercise 12.9
+Refer to Exercise 12.6 and assume that the assumptions about the model prevail. The estimated standard errors of $\hat{\beta_1}$, and $\hat{\beta_2}$ are .00161, and .1862, respectively. 
+\newline
+\newline
+**a) Determine a 95% Confidence Interval for $\beta_2$.** \newline
+To obtain a $100(1 - \alpha)\%$ confidence interval for $\beta_2$, we'll use $\beta_2 \pm t_{\frac{\alpha}{2}}\frac{S}{\sqrt{S_{xx}}}$:
+
+```{r}
+bhat2 <- -1.56
+t <- StudentsT(50)
+lower <- bhat2 - (quantile(t, 1 - .05 / 2) * .1862)
+upper <- bhat2 + (quantile(t, 1 - .05 / 2) * .1862)
+paste(lower, ', ', upper)
+```
+b) Test $H_0$: $\beta_1 = .0125$ versus $H_1$: $\beta_1 > .0125$, with $\alpha = .05$.
+When testing $H_0: \beta_1 = \beta_{10}$, the test statistic is $T = \frac{\hat{\beta_1} - \beta_{10}}{\frac{S}{\sqrt{S_{xx}}}}, d.f. = n-2$, with a rejection region $R:T \geq t_\alpha$:
+```{r}
+bhat1 <- .0156
+t <- StudentsT(48)
+test <- (bhat1 - .0125)/(.00161)
+t_val <- quantile(t, 1 - .05)
+paste('Test statistic:', test, 't_a:', t_val)
+```
+Because the test statistic (1.925) is greater than $t_{.05}$ (1.677), we reject $H_0$. 
